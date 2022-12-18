@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Car</title>
+</head>
+
+<body>
+
+<table>
+  <tr>
+    <th>brand</th>
+    <th>color</th>
+    <th>power<th>
+  </tr>
+
+  <tr th:each="lst : ${cars}">
+    <td th:utext="${lst.name}">brand</td>
+    <td th:utext="${lst.coast}">color</td>
+    <td th:utext="${lst.seria}">power</td>
+  </tr>
+
+</table>
+
+</body>
+
+</html>

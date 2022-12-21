@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Car</title>
+</head>
+
+<body>
+
+<table>
+    <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>lastName<th>
+        <th>age</th>
+        <th>edit</th>
+        <th>delete<th>
+    </tr>
+
+    <tr th:each="lst : ${listUsers}">
+        <td th:utext="${lst.id}">id</td>
+        <td th:utext="${lst.name}">name</td>
+        <td th:utext="${lst.lastName}">lastName</td>
+        <td th:utext="${lst.age}">age</td>
+        <td>
+            <form th:action="@{/users/{id}/edit(id=${lst.getId})}">
+                <input type="submit" value="Edit user"/>
+            </form>
+        </td>
+        <td>
+            <form th:method="DELETE" th:action="@{/users/remove/{id}/(id=${lst.getId})}">
+                <input type="submit" value="Delete user"/>
+            </form>
+        </td>
+    </tr>
+
+</table>
+
+<form th:method="POST" th:action="@{/users/add}" th:object="${user}">
+    <label for="name">Enter name: </label>
+    <input type="text" th:field="*{name}" id="name"/>
+    <br/>
+    <label for="lastname">Enter surname: </label>
+    <input type="text" th:field="*{lastName}" id="lastname">
+    <br/>
+    <label for="age">Enter age: </label>
+    <input type="text" th:field="*{age}" id="age">
+    <br/>
+    <input type="submit" value="Create!"/>
+</form>
+
+
+</body>
+
+</html>
